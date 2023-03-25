@@ -20,5 +20,5 @@ class LoginPasswordChanged extends LoginEvent {
 
 class LoginSubmitted extends LoginEvent {
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }

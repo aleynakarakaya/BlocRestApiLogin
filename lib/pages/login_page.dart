@@ -1,8 +1,9 @@
 import 'package:bloc_task/blocs/login/login_bloc.dart';
+import 'package:bloc_task/blocs/login/login_event.dart';
 import 'package:bloc_task/blocs/login/login_state.dart';
 import 'package:bloc_task/exceptions/form_submission_status.dart';
 import 'package:bloc_task/pages/widgets/login_ui_widget.dart';
-import 'package:bloc_task/repositories/login_repository.dart';
+import 'package:bloc_task/services/login_info_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,8 +14,9 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) =>
-            LoginBloc(authRepo: context.read<LoginRepository>()),
+        create: (context) => LoginBloc(
+          RepositoryProvider.of<LoginInfoService>(context),
+        )..add(LoginSubmitted()),
         child: BlocListener<LoginBloc, LoginState>(
           listenWhen: ((previous, current) =>
               previous.formStatus != current.formStatus),

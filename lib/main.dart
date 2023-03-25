@@ -1,5 +1,5 @@
 import 'package:bloc_task/pages/login_page.dart';
-import 'package:bloc_task/repositories/login_repository.dart';
+import 'package:bloc_task/services/login_info_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
                 primary: Colors.grey,
               )),
       home: RepositoryProvider(
-          create: (context) => LoginRepository(), //connected with login repo
+          create: (context) => LoginInfoService(), //connected with login repo
           child: const LoginPage()),
     );
   }
